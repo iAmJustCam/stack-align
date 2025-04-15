@@ -1,0 +1,16 @@
+# .gitlab-ci.yml
+stages:
+  - validate
+  - test-healing
+
+validate:
+  stage: validate
+  script:
+    - npm ci
+    - npx stack-align analyze --strict
+
+test-healing:
+  stage: test-healing
+  script:
+    - npm ci
+    - npx stack-align heal --dry-run

@@ -1,0 +1,74 @@
+/* Global CSS with issues */
+
+/* Not using proper cascade layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS without proper organization */
+.card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-content {
+  color: #4a5568;
+}
+
+/* Not using Tailwind's color system */
+.badge-success {
+  background-color: #48bb78;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.badge-warning {
+  background-color: #ed8936;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+/* Not using Tailwind's flexbox utilities */
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Missing dark mode support */
+body {
+  background-color: white;
+  color: #1a202c;
+}
+
+/* Missing responsive design with Tailwind's breakpoints */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

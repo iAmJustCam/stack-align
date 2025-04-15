@@ -1,0 +1,98 @@
+{
+  "name": "stack-align",
+  "version": "1.0.0",
+  "description": "Comprehensive validation and healing system for React 19, Next.js 15, TypeScript 5, and Tailwind v4",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "stack-align": "./bin/cli.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:safe": "tsc --noEmitOnError false",
+    "clean": "ts-node src/scripts/clean.ts",
+    "clean:legacy": "rimraf dist",
+    "test:clean": "ts-node src/scripts/test-clean.ts",
+    "prebuild": "npm run clean",
+    "postbuild": "chmod +x dist/cli/index.js && chmod +x bin/cli.js",
+    "start": "node bin/cli.js",
+    "dev": "ts-node src/cli/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:generate": "ts-node src/cli/index.ts test:generate",
+    "test:validator": "ts-node test/validator-test-harness.ts",
+    "test:healing": "ts-node test/healing-test-harness.ts",
+    "test:system": "ts-node test/run-tests.ts",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "prepare": "npm run build",
+    "link-dev": "npm link",
+    "unlink-dev": "npm unlink",
+    "prepublishOnly": "npm test && npm run lint && npm run build",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "typescript",
+    "tailwind",
+    "vitest",
+    "validation",
+    "healing",
+    "testing"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "clsx": "^2.0.0",
+    "commander": "^11.0.0",
+    "figlet": "^1.6.0",
+    "glob": "^11.0.1",
+    "minimatch": "^9.0.3",
+    "ora": "^5.4.1",
+    "react": "^19.0.0",
+    "tailwind-merge": "^2.0.0",
+    "ts-morph": "^25.0.1",
+    "zustand": "^4.4.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/figlet": "^1.5.6",
+    "@types/node": "^20.4.5",
+    "@types/react": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-react": "^7.33.0",
+    "husky": "^8.0.3",
+    "jsdom": "^22.1.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.8",
+    "vitest": "^0.33.0"
+  },
+  "files": [
+    "dist/**/*",
+    "bin/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cameroncatri/stack-align.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cameroncatri/stack-align/issues"
+  },
+  "homepage": "https://github.com/cameroncatri/stack-align#readme"
+}

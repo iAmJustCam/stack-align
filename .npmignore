@@ -1,0 +1,34 @@
+# Source files
+src/
+tsconfig.json
+.eslintrc
+.gitignore
+.prettierrc
+
+# Test files
+test/
+**/*.test.ts
+**/*.test.tsx
+**/__tests__/
+coverage/
+.nyc_output/
+vitest.config.ts
+
+# Development files
+.vscode/
+.github/
+docs/examples/
+scripts/
+.editorconfig
+.nvmrc
+
+# Build artifacts
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# Don't ignore these files
+!bin/
+!dist/
+!LICENSE
+!README.md

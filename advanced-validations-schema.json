@@ -1,0 +1,316 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tech Stack Alignment Advanced Validations",
+  "type": "object",
+  "properties": {
+    "nextjs": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" },
+            "requiredFields": {
+              "type": "array",
+              "items": { "type": "string" },
+              "default": ["title", "description", "openGraph"]
+            }
+          }
+        },
+        "asyncLayoutApis": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "dynamicRouteSegments": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "generateStaticParams": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "legacyApiInAppRouter": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "middlewareSignatureUpdates": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "fontOptimization": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "suggestion" }
+          }
+        },
+        "imageOptimization": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" },
+            "minDimensions": {
+              "type": "object",
+              "properties": {
+                "width": { "type": "number", "default": 300 },
+                "height": { "type": "number", "default": 300 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "react": {
+      "type": "object",
+      "properties": {
+        "stringRefs": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "findDOMNode": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "useFormState": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "useHookConditionalUsage": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "headElementsInJSX": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "suspenseBoundaries": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "componentNaming": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" },
+            "pattern": { "type": "string", "default": "^[A-Z][A-Za-z0-9]*$" }
+          }
+        },
+        "effectDependencyArray": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" },
+            "autoDetectDependencies": { "type": "boolean", "default": true }
+          }
+        },
+        "useClientDirective": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "namedExports": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        }
+      }
+    },
+    "tailwind": {
+      "type": "object",
+      "properties": {
+        "legacyConfigOverride": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "logicalProperties": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "suggestion" }
+          }
+        },
+        "customPluginMigration": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "suggestion" }
+          }
+        },
+        "deprecatedUtility": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" },
+            "utilities": {
+              "type": "array",
+              "items": { "type": "string" },
+              "default": ["target", "transform", "filter", "isolation", "content"]
+            }
+          }
+        },
+        "classOrganization": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "suggestion" },
+            "useUtility": { "type": "boolean", "default": true }
+          }
+        },
+        "inlineStylesToTailwind": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        }
+      }
+    },
+    "typescript": {
+      "type": "object",
+      "properties": {
+        "verbatimModuleSyntax": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "satisfiesOperator": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "multipleExtends": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "suggestion" }
+          }
+        },
+        "exactOptionalPropertyTypes": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "legacyDecorators": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "typeImports": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "namespaceImports": {
+          "type": "object", 
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "parseFileUsage": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        },
+        "nodeTyping": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "error" }
+          }
+        }
+      }
+    },
+    "devExperience": {
+      "type": "object",
+      "properties": {
+        "vscodeWorkspaceSettings": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "suggestion" },
+            "requiredSettings": {
+              "type": "array",
+              "items": { "type": "string" },
+              "default": ["editor.formatOnSave", "editor.codeActionsOnSave"]
+            }
+          }
+        },
+        "cliSchemaValidation": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        },
+        "monorepoConfigDiscovery": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "suggestion" }
+          }
+        },
+        "prettierEslintIntegration": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "severity": { "type": "string", "enum": ["error", "warning", "suggestion"], "default": "warning" }
+          }
+        }
+      }
+    }
+  }
+}

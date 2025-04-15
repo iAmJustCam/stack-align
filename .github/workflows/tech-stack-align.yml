@@ -1,0 +1,85 @@
+name: Tech Stack Alignment
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    name: Validate Tech Stack Alignment
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run Stack Alignment Check
+        run: npx stack-align analyze --strict --summary
+        
+      - name: Generate HTML Report (for PRs)
+        if: github.event_name == 'pull_request'
+        run: npx stack-align analyze --report html --save stack-align-report.html
+        
+      - name: Upload Report Artifact
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v3
+        with:
+          name: stack-align-report
+          path: stack-align-report.html
+          
+  # Optional job to automatically fix issues on PRs
+  # Uncomment to enable
+  # auto-fix:
+  #   name: Suggest Tech Stack Fixes
+  #   runs-on: ubuntu-latest
+  #   needs: validate
+  #   if: github.event_name == 'pull_request'
+  #   
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #       
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '20'
+  #         cache: 'npm'
+  #         
+  #     - name: Install dependencies
+  #       run: npm ci
+  #       
+  #     - name: Generate Fix Suggestions
+  #       run: |
+  #         npx stack-align heal --dry-run > fix-suggestions.txt
+  #         
+  #     - name: Comment on PR with Suggestions
+  #       uses: actions/github-script@v6
+  #       with:
+  #         github-token: ${{secrets.GITHUB_TOKEN}}
+  #         script: |
+  #           const fs = require('fs');
+  #           const suggestions = fs.readFileSync('fix-suggestions.txt', 'utf8');
+  #           
+  #           github.rest.issues.createComment({
+  #             issue_number: context.issue.number,
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             body: '## Tech Stack Alignment Suggestions\n\n' +
+  #                   'Our analysis found some issues that could be automatically fixed:\n\n' +
+  #                   '```\n' + suggestions + '\n```\n\n' +
+  #                   'To fix these issues, run:\n' +
+  #                   '```bash\n' +
+  #                   'npx stack-align heal\n' +
+  #                   '```'
+  #           })

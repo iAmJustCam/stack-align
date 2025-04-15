@@ -1,0 +1,22 @@
+# Sample .alignignore file
+# Syntax is similar to .gitignore - any matching files will be excluded from validation
+
+# Ignore specific files
+**/temp.ts
+**/scratch.tsx
+**/*.custom.tsx
+
+# Ignore specific directories
+**/legacy/**
+**/generated/**
+**/.vscode/**
+**/dist/**
+**/build/**
+
+# Ignore specific directories with complex patterns
+**/components/**/__legacy__/**
+**/backup-*/**
+
+# Commented out examples
+# *.stories.tsx
+# **/*test*/**
